@@ -112,7 +112,9 @@ def start():
 
 
 if __name__ == '__main__':
-    if sys.argv[1]:
+    if len (sys.argv) == 1: #Перевіряємо, чи є у нас аргумент командного рядка, щоб уникнути IndexError, якщо аргумент відсутній
+        print("Please provide a folder path as an argument.")
+    else:
         folder_for_scan = Path(sys.argv[1])
         print(f'Start in folder {folder_for_scan.resolve()}')
         main(folder_for_scan.resolve())
