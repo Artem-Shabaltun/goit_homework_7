@@ -105,16 +105,12 @@ def main(folder: Path):
         handle_folder(folder)
 
 def start():
-    if sys.argv[1]:
-        folder_for_scan = Path(sys.argv[1])
-        print(f'Start in folder {folder_for_scan.resolve()}')
-        main(folder_for_scan.resolve())
-
-
-if __name__ == '__main__':
-    if len (sys.argv) == 1: #Перевіряємо, чи є у нас аргумент командного рядка, щоб уникнути IndexError, якщо аргумент відсутній
+    if len(sys.argv) == 1: #Перевіряємо, чи є у нас аргумент командного рядка, щоб уникнути IndexError, якщо аргумент відсутній
         print("Please provide a folder path as an argument.")
     else:
         folder_for_scan = Path(sys.argv[1])
         print(f'Start in folder {folder_for_scan.resolve()}')
         main(folder_for_scan.resolve())
+
+if __name__ == '__main__': #Оскільки всі перевірки наявності аргумента командного рядка були перенесені до функції start.Тепер main лише викликається з аргументом, який був заданий в start
+    start()
